@@ -10,8 +10,30 @@ const rl = readline.createInterface({
 
 function rockPaperScissors(hand1, hand2) {
 
-  // Write code here
-
+  //Hand1 Wins!
+  if (hand1 === 'rock' && hand2 === 'scissors') {               
+    return "Hand1 wins!";
+  } else if (hand1 ==='paper' && hand2 === 'rock') {
+    return "Hand1 wins!";
+  } else if (hand1 === 'scissors' && hand2 === 'paper') {
+    return "Hand1 wins!";
+  }
+  //Hand2 Wins!
+  else if (hand1 === 'scissors' && hand2 === 'rock') {          
+    return "Hand2 wins!";
+  } else if (hand1 === 'rock' && hand2 === 'paper') {
+    return "Hand2 wins!";
+  } else if (hand1 === 'paper' && hand2 === 'scissors') {
+    return "Hand2 wins!";
+  }
+  //Ties
+  else if (hand1 === 'scissors' && hand2 === 'scissors') {
+    return "Its a tie!";
+  } else if (hand1 === 'rock' && hand2 === 'rock') {
+    return "Its a tie!";
+  } else if (hand1 === 'paper' && hand2 === 'paper') {
+    return "Its a tie!";
+  }
 }
 
 function getPrompt() {
