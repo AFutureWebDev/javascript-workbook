@@ -9,9 +9,24 @@ const rl = readline.createInterface({
 
 
 function pigLatin(word) {
+  let cut = word.trim().toLowerCase();         // The word inputted will be changed to lowercase and all spaces before and after the word will be trimmed.
+  console.log(cut);
 
-  // Your code here
+  let vowels = ['a', 'e', 'i', 'o', 'u'];      // All possible vowels
+  let result = cut.split('');
 
+  if (vowels.includes(cut.charAt(0))) {        // Take the first letter and asks if it's included in the vowels array 
+    return cut += 'yay';                       // If the first letter is a vowel, put 'yay' at the end of the word
+  } else {
+    for (let i = 0; i < cut.length; i++) {     // Create a loop
+      if (!vowels.includes(cut[i])) {          // If the string does NOT contain a vowel, then
+        result.push(result.shift());           // shift the consonants to the end of the string
+      } else {
+        result.push('ay');                     // add 'ay' to the beginning of the string
+        return result.join('');                // makes all the results a string
+      }
+    }
+  }
 }
 
 
