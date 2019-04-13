@@ -24,23 +24,41 @@ function printBoard() {
 }
 
 function horizontalWin() {
-  // Your code here
+  // Possible horizontal wins
+  let winArrH = board[[0][0,1,2],[1][0,1,2],[2][0,1,2]];
 }
 
 function verticalWin() {
-  // Your code here
+  // Possible vertical wins
+  let winArrV = board[[0][0][0],[1][1][1],[2][2][2]];
 }
 
 function diagonalWin() {
-  // Your code here
+  // Possible diagonal wins
+  let winArrD = board[[0][0],[1][1],[2][2],[0][2],[1][1],[2][0]];
 }
 
 function checkForWin() {
   // Your code here
+  for (let i = 0; i < board.length; i++) {
+    if (horizontalWin() == true) {
+      console.log(playerTurn + "wins!");
+    }
+  }
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+  // If player X makes a move, return an X in the designated position, then switch to player O
+  if (playerTurn === "X") {
+    board[row][column] = playerTurn;
+    playerTurn = "O";
+
+  // If player 0 makes a mvoe, return an O in the designated position, then switch to player X
+  } else if (playerTurn === "O") {
+    board[row][column] = playerTurn;
+    playerTurn = "X";
+  // If an X or an O is already in the space, write nothing
+  } 
 }
 
 function getPrompt() {
