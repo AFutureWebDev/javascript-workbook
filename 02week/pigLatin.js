@@ -24,9 +24,9 @@ function pigLatin(word) {
       } else {
         result.push('ay');                     // add 'ay' to the beginning of the string
         return result.join('');                // makes all the results a string
-      }
-    }
-  }
+      } 
+    } 
+  } 
 }
 
 
@@ -57,6 +57,9 @@ if (typeof describe === 'function') {
     it('should lowercase and trim word before translation', () => {
       assert.equal(pigLatin('HeLlO '), 'ellohay');
       assert.equal(pigLatin(' RoCkEt'), 'ocketray');
+    });
+    it ('Should separate two words and return them together', () => {
+      assert.equal(pigLatin('Hop Fest'), 'Ophay Estfay');
     });
   });
 } else {
