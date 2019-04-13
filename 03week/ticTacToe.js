@@ -25,25 +25,38 @@ function printBoard() {
 
 function horizontalWin() {
   // Possible horizontal wins
-  let winArrH = board[[0][0,1,2],[1][0,1,2],[2][0,1,2]];
+  let winArrH = board[0][0];
+  if ((board[0][0] == playerTurn && board[0][1] == playerTurn && board[0][2] == playerTurn) || (board[1][0] == playerTurn && board[1][1] == playerTurn && board[1][2] == playerTurn) || (board[2][0] == playerTurn && board[2][1] == playerTurn && board[2][2] == playerTurn)) {
+    return true;
+  }
 }
+
+horizontalWin();
 
 function verticalWin() {
   // Possible vertical wins
-  let winArrV = board[[0][0][0],[1][1][1],[2][2][2]];
+  let winArrV = board[0][0];
+  if ((board[0][0] == playerTurn && board[1][0] == playerTurn && board[2][0] == playerTurn) || (board[0][1] == playerTurn && board[1][1] == playerTurn && board[2][1] == playerTurn) || (board[0][2] == playerTurn && board[1][2] == playerTurn && board[2][2] == playerTurn)) {
+    return true;
+  }
 }
 
 function diagonalWin() {
   // Possible diagonal wins
-  let winArrD = board[[0][0],[1][1],[2][2],[0][2],[1][1],[2][0]];
+  let winArrD = board[0][0];
+  if ((board[0][0] == playerTurn && board[1][1] == playerTurn && board[2][2] == playerTurn) || (board[0][2] == playerTurn && board[1][1] == playerTurn && board[2][0] == playerTurn)) {
+    return true;
+  }
 }
 
 function checkForWin() {
-  // Your code here
-  for (let i = 0; i < board.length; i++) {
-    if (horizontalWin() == true) {
-      console.log(playerTurn + "wins!");
-    }
+  // Possible remove parentheses if doesnt work
+  if (horizontalWin()) {
+    return true;
+  } else if (verticalWin()) {
+    return true;
+  } else if (diagonalWin()) {
+    return true;
   }
 }
 
@@ -57,8 +70,11 @@ function ticTacToe(row, column) {
   } else if (playerTurn === "O") {
     board[row][column] = playerTurn;
     playerTurn = "X";
-  // If an X or an O is already in the space, write nothing
+  // If an X or an O is already in the space, write nothing?
   } 
+  // else if (board[row][column] !== "") {
+  //   return null;
+  // }
 }
 
 function getPrompt() {
