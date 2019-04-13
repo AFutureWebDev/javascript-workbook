@@ -50,12 +50,12 @@ function diagonalWin() {
 }
 
 function checkForWin() {
-  // Possible remove parentheses if doesnt work
-  if (horizontalWin()) {
+  // check all the possible win options
+  if (horizontalWin()) {                  // check if there is a horizontal win
     return true;
-  } else if (verticalWin()) {
+  } else if (verticalWin()) {             // check if there is a vertical win
     return true;
-  } else if (diagonalWin()) {
+  } else if (diagonalWin()) {             // check if there is a diagonal win
     return true;
   }
 }
@@ -66,15 +66,11 @@ function ticTacToe(row, column) {
     board[row][column] = playerTurn;
     playerTurn = "O";
 
-  // If player 0 makes a mvoe, return an O in the designated position, then switch to player X
+  // If player 0 makes a move, return an O in the designated position, then switch to player X
   } else if (playerTurn === "O") {
     board[row][column] = playerTurn;
     playerTurn = "X";
-  // If an X or an O is already in the space, write nothing?
   } 
-  // else if (board[row][column] !== "") {
-  //   return null;
-  // }
 }
 
 function getPrompt() {
