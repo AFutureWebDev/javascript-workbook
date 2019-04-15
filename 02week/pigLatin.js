@@ -24,7 +24,7 @@ function pigLatin(word) {
       } else {
         result.push('ay');                     // add 'ay' to the beginning of the string
         return result.join('');                // makes all the results a string
-      } 
+      }
     } 
   } 
 }
