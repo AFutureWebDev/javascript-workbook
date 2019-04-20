@@ -1,0 +1,92 @@
+.container {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: lavender;
+    color: black;
+    text-shadow: 2px 2px 2px white;
+    font-family: 'Laila', serif;
+    font-size: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover {
+    background-color: purple;
+}
+
+.top {
+    border-top: 2px solid white;
+}
+
+.bottom {
+    border-bottom: 2px solid white;
+}
+
+.left {
+    border-left: 2px solid white;
+}
+
+.right {
+    border-right: 2px solid white;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#clear_btn {
+    margin: 5px 10px;
+    width: 100px;
+    height: 50px;
+    background-color: gray;
+    color: white;
+}
+
+#clear_btn:hover {
+    background-color: black;
+}
+
+.btn {
+    margin: 5px 10px;
+    width: 50px;
+    height: 50px;
+    background-color: gray;
+    color: white;
+}
+
+.btn:hover {
+    background-color: black;
+}
+
+
+@media (min-width: 299px) {
+    .container {
+        display: grid;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    }
+}
+
+
+@media (min-width: 992px) {
+    .container {
+        display: grid;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        width: 600px;
+        height: 600px;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+    }
+}

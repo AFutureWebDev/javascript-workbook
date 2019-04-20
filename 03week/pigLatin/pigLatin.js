@@ -5,11 +5,11 @@ form.onsubmit = pigLatin;
 
 function pigLatin(e) {
   e.preventDefault();
-  console.log(e);
+  
   let word = e.target[0].value;
-  console.log(word);
+  
   let cut = word.trim().toLowerCase();         // The word inputted will be changed to lowercase and all spaces before and after the word will be trimmed.
-  console.log(cut);
+  
 
   let vowels = ['a', 'e', 'i', 'o', 'u'];      // All possible vowels
   let result = cut.split('');
@@ -22,9 +22,10 @@ function pigLatin(e) {
         result.push(result.shift());           // shift the consonants to the end of the string
       } else {
         result.push('ay');                     // add 'ay' to the beginning of the string
+        pigText.innerText = result.join('');
+        break;                     
       }
     } 
-    pigText.innerText = result.join('');
   } 
 }
 
