@@ -22,19 +22,19 @@
     background-color: purple;
 }
 
-.top {
+.bor-top {
     border-top: 2px solid white;
 }
 
-.bottom {
+.bor-bottom {
     border-bottom: 2px solid white;
 }
 
-.left {
+.bor-left {
     border-left: 2px solid white;
 }
 
-.right {
+.bor-right {
     border-right: 2px solid white;
 }
 
@@ -66,6 +66,12 @@
 
 .btn:hover {
     background-color: black;
+}
+
+#winner {
+    font-family: 'Laila', serif;
+    font-size: 25px;
+    text-align: center;
 }
 
 
