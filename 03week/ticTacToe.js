@@ -18,13 +18,19 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-// function resetBoard() {
-//   console.log("clear")
-//   board = document.getElementsByClassName("box");
-//   for (var i=0; i<board.length; i++) {
-//       board[i].innerHTML = "";
-//   }
-// }
+function resetBoard() {
+  //find element with class name 'box'
+  let boxes = document.getElementsByClassName("box");
+  //loop through the boxes and clear each box
+  for (var i=0; i<boxes.length; i++) {
+      boxes[i].innerHTML = "";
+      board = [
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']
+      ];
+  }
+}
 
 function horizontalWin() {
   // Possible horizontal wins
@@ -56,6 +62,7 @@ function checkForWin() {
 }
 
 function ticTacToe(row, column, id) {
+  console.log(playerTurn);
   if(board[row][column] == " ") {
   document.getElementById(id).innerHTML = (playerTurn);
   board[row][column] = playerTurn;
