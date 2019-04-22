@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+    <link rel="stylesheet" href="tttStyles.css">
+</head>
+
+<body>
+    <div id="winner"></div>
+    <section class="container">
+        <!-- TOP ROW -->
+        <div class="box bottom right" onclick="ticTacToe(this)" id="topL"></div>
+        <div class="box left bottom right" onclick="ticTacToe(this)" id="topC"></div>
+        <div class="box left bottom" onclick="ticTacToe(this)" id="topR"></div>
+
+        <!-- MIDDLE ROW -->
+        <div class="box top right bottom" onclick="ticTacToe(this)" id="midL"></div>
+        <div class="box top right bottom left" onclick="ticTacToe(this)" id="midC"></div>
+        <div class="box top left bottom" onclick="ticTacToe(this)" id="midR"></div>
+
+        <!-- BOTTOM ROW -->
+        <div class="box top right" onclick="ticTacToe(this)" id="botL"></div>
+        <div class="box left top right" onclick="ticTacToe(this)" id="botC"></div>
+        <div class="box left top" onclick="ticTacToe(this)" id="botR"></div>
+</section>
+
+<section class="buttons">
+    <!-- <button class="btn" onclick="changeMarkerToX()">X</button>
+    <p>OR</p>
+    <button class="btn" onclick="changeMarkerToO()">O</button> -->
+    <button id="clear_btn" onclick="reset()">RESET</button>
+</section>
+
+<script src="ticTacToe.js"></script>
+
+</body>
+</html>

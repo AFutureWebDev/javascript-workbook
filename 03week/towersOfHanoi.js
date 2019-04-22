@@ -35,7 +35,9 @@ function checkForWin() {
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
+  //start stack is the a, b, or c
+  //end stack is where you want to move the element
+  
 
 }
 
