@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css?family=Laila" rel="stylesheet">
+    <link rel="stylesheet" href="/tttStyles.css">
+</head>
+
+<body>
+    <h5 id="winner"></h5>
+    <section class="container">
+        <!-- TOP ROW -->
+        <div class="box bor-bottom bor-right" onclick="ticTacToe(0, 0, 'topL')" id="topL"></div>
+        <div class="box bor-left bor-bottom bor-right" onclick="ticTacToe(0, 1, 'topC')" id="topC"></div>
+        <div class="box bor-left bor-bottom" onclick="ticTacToe(0, 2, 'topR')" id="topR"></div>
+
+        <!-- MIDDLE ROW -->
+        <div class="box bor-top bor-right bor-bottom" onclick="ticTacToe(1,0, 'midL')" id="midL"></div>
+        <div class="box bor-top bor-right bor-bottom bor-left" onclick="ticTacToe(1, 1, 'midC')" id="midC"></div>
+        <div class="box bor-top bor-left bor-bottom" onclick="ticTacToe(1, 2, 'midR')" id="midR"></div>
+
+        <!-- BOTTOM ROW -->
+        <div class="box bor-top bor-right" onclick="ticTacToe(2, 0, 'botL')" id="botL"></div>
+        <div class="box bor-left bor-top bor-right" onclick="ticTacToe(2, 1, 'botC')" id="botC"></div>
+        <div class="box bor-left bor-top" onclick="ticTacToe(2, 2, 'botR')" id="botR"></div>
+</section>
+
+<section class="buttons">
+     <button id="clear_btn" onclick="resetBoard()">RESET</button>
+</section>
+
+<script src="/ttt-gui.js"></script>
+
+</body>
+</html>
