@@ -19,23 +19,44 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
+function movePiece(startStack, endStack) {
+//Take the chosen starStack and pop off the last number in the array
+let piece = stacks[startStack].pop();
+console.log(piece);
+//Take the number that was popped off and push it on to a new array(endStack)
+stacks[endStack].push(piece);
 
 }
 
-function isLegal() {
+function isLegal(startStack, endStack) {
   // Your code here
-
+  //putting smaller numbers after bigger numbers in the array
+  //have to take numbers from an array with numbers in it
+  let startArray = stacks[startStack];
+  let endArray = stacks[endStack];
+  let iStart = startArray.length-1;
+  let iEnd = endArray.length-1;
+  if (endArray != []) {
+  if (endArray[iEnd] > startArray[iStart]) {
+    return true;
+  } else return false;
+  } else return false;
 }
 
 function checkForWin() {
   // Your code here
-
+// b or c with 4 items in the array and other two arrays have to be empty
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
+  // If the startStack and endStack is truthy, move the piece
+  if (isLegal(startStack,endStack)) {
+    movePiece(startStack, endStack);
+  // If falsey, tell the user it's an invalid move
+  } else {
+    console.log('Not a valid move');
+  }
+  
 
 }
 
