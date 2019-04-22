@@ -24,23 +24,53 @@ function printBoard() {
 }
 
 function horizontalWin() {
-  // Your code here
+  // Possible horizontal wins
+  let winArrH = board[0][0];
+  if ((board[0][0] == playerTurn && board[0][1] == playerTurn && board[0][2] == playerTurn) || (board[1][0] == playerTurn && board[1][1] == playerTurn && board[1][2] == playerTurn) || (board[2][0] == playerTurn && board[2][1] == playerTurn && board[2][2] == playerTurn)) {
+    return true;
+  }
 }
 
+horizontalWin();
+
 function verticalWin() {
-  // Your code here
+  // Possible vertical wins
+  let winArrV = board[0][0];
+  if ((board[0][0] == playerTurn && board[1][0] == playerTurn && board[2][0] == playerTurn) || (board[0][1] == playerTurn && board[1][1] == playerTurn && board[2][1] == playerTurn) || (board[0][2] == playerTurn && board[1][2] == playerTurn && board[2][2] == playerTurn)) {
+    return true;
+  }
 }
 
 function diagonalWin() {
-  // Your code here
+  // Possible diagonal wins
+  let winArrD = board[0][0];
+  if ((board[0][0] == playerTurn && board[1][1] == playerTurn && board[2][2] == playerTurn) || (board[0][2] == playerTurn && board[1][1] == playerTurn && board[2][0] == playerTurn)) {
+    return true;
+  }
 }
 
 function checkForWin() {
-  // Your code here
+  // check all the possible win options
+  if (horizontalWin()) {                  // check if there is a horizontal win
+    return true;
+  } else if (verticalWin()) {             // check if there is a vertical win
+    return true;
+  } else if (diagonalWin()) {             // check if there is a diagonal win
+    return true;
+  }
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+  // If player X makes a move, return an X in the designated position, then switch to player O
+  if (playerTurn === "X") {
+    board[row][column] = playerTurn;
+    playerTurn = "O";
+
+  // If player 0 makes a move, return an O in the designated position, then switch to player X
+  } else if (playerTurn === "O") {
+    board[row][column] = playerTurn;
+    playerTurn = "X";
+  } 
 }
 
 function getPrompt() {
