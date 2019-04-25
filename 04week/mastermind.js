@@ -37,42 +37,39 @@ function generateHint(solution, guess) {
   for (let i = 0; i < solutionArray.length; i++) {
     if (solutionArray[i] === guessArray[i]) {
       correctLetterLocations = correctLetterLocations + 1;
-      console.log(correctLetterLocations);
       solutionArray[i] = null;
-      console.log(solutionArray);
     }
    // Set a variable correctLetters equal to 0, and in a for loop, again iterate over the solutionArray. Using .indexOf, determine if the item at the current index in guessArray appears inside of solutionArray. Save that index in a variable called targetIndex. Now, if targetIndex is greater than -1, increment correctLetters and set the item in solutionArray at that index equal to null.
   }
   let correctLetters = 0;
   for (let n = 0; n < solutionArray.length; n++) {
-    let targetIndex = solutionArray.indexOf(guessArray[n]);
+    let targetIndex = guessArray.indexOf(solutionArray[n]);
     if (targetIndex > -1) {
       correctLetters = correctLetters + 1;
-      solutionArray[targetIndex] = null;
+      solutionArray[n] = null;
     } 
   }
-  // Define a var called hint that collects the returned value of generateHint(solution, guess). .push the guess and the hint (as a combined string) into the board.
-  // let hint = generateHint(solution, guess);
-  // let combineString = (hint.concat(' ', guess));
-  // combineString.push(board);
-
-  // After 10 incorrect guesses, if the board length equals 10, return 'You ran out of turns! The solution was ' and the solution. Otherwise, return 'Guess again.'
- if (board.length == 10) {
-  console.log(`You ran out of turns! The solution was ${solution}.`);
-} else
-  console.log('Guess again.');
+  // combine correctLetterLocations and correctLetters 
+return correctLetterLocations + "-" + correctLetters;
 }
 
 
-function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // Detect a correct solution In mastermind(), if the guess you passed in equals the solution, return 'You guessed it!';
-  generateHint(solution, guess);
 
-  if (guess === solution) {
+function mastermind(guess) {
+  solution = 'abcd'; 
+   // After 10 incorrect guesses, if the board length equals 10, return 'You ran out of turns! The solution was ' and the solution. Otherwise, return 'Guess again.'
+ if (board.length == 10) {
+  return `You ran out of turns! The solution was ${solution}.`;
+} else {
+  // if the guess is not the solution, provide the user with hints and if they guess the solution, inform the user
+   if (guess != solution) {
+    let hints = generateHint(solution, guess);
+    board.push("guess: " + guess + ", " + hints)
+  } else {
     console.log('You guessed it!');
-  } else
-  console.log('Not quite, keep guessing!');
+    return "You guessed it!";
+  }
+ }
 }
 
 
@@ -100,10 +97,10 @@ if (typeof describe === 'function') {
 
   describe('#generateHint()', () => {
     it('should generate hints', () => {
-      assert.equal(generateHint('abdc'), '2-2');
+      assert.equal(generateHint(solution,'abdc'), '2-2');
     });
     it('should generate hints if solution has duplicates', () => {
-      assert.equal(generateHint('aabb'), '1-1');
+      assert.equal(generateHint(solution,'aabb'), '1-1');
     });
 
   });
