@@ -10,3 +10,4 @@
 -	Only be able to remove a number from the end of an array and placed on the end on of another array
 -	We always move numbers into an empty array
 -	If you choose from an empty stack or one that doesn’t exist, the stacks wont be updated and a message will be console.logged out saying ‘choose a valid stack.’
+-   You are unable to win on column A.
