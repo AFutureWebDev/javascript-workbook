@@ -2,38 +2,81 @@
 
 const assert = require('assert');
 
-function forEach(arr, callback) {
-  // Your code here
-}
-
+//.map Function
+let array = [10, 20, 30, 40, 50];
 function map(arr, callback) {
-  // Your code here
+  //create an empty array to store the looped thru elements
+  let newArray = [];
+  //loop thru the array
+  for(let i = 0; i < arr.length; i++) {
+    //the callback takes the number in the array
+    //save it to variable element
+    let elements = callback(arr[i]);
+    //push all of the saved elements into the new array
+    newArray.push(elements);
+  }
+  //returns a new array
+  return newArray;
 }
+//calling the function
+let mapIt = map(array, function(n){
+  return n;
+})
+  console.log(mapIt);
 
+
+//.fitler Funtion
+let arr = [1, 2, 3, 4, 5, 6];   //not sure why this variable isn't being read?
 function filter(arr, callback) {
-  // Your code here
+  const array = [];
+
+  //loop thru the given array
+  for(let i =0; i < arr.length; i++) {
+    const result = callback(arr[i], i, arr);
+    //push the current element if result is true
+    if (result)
+    array.push(arr[i]);
+  }
+  return array;
+}
+const oddArr = function filter(arr, num) {
+  (num % 2 === 0);
+  console.log(oddArr);
 }
 
-function some(arr, callback) {
-  // Your code here
+
+//.reduce Function
+//variable that checks objects
+const checkObject = [{price: 10},{price: 20}, {price: 30}];
+//variable that checks arrays
+const checkArray = [10,20,30];
+function reduce(array, accumulator) {
+  //the accumulator equals what the user puts in OR zero
+  accumulator = accumulator || 0;
+  //loop thru the given array or object
+  for (let index = 0; index < array.length; index++) {
+    //if the array is a number...
+    if(typeof array[index] == 'number') {
+      //then the number at array[index] is added to the accumulator
+      accumulator = accumulator + array[index];
+      //if the array is an object...
+    } else if (typeof array[index] == 'object') {
+      //loop thru the object
+      for(let i in array[index]) {
+        //add the value of the object to the accumulator
+        accumulator = accumulator + array[index][i];
+      }
+    }
+  }
+  return accumulator;
 }
 
-function every(arr, callback) {
-  // Your code here
-}
+const sum = reduce(checkArray, 10); // set accumulator to 10
+console.log("ANSWER: ", sum);
+
+
 
 if (typeof describe === 'function') {
-
-  describe('#forEach()', () => {
-    it('should call the callback the array.length number of times', () => {
-      let count = 0;
-      forEach([1, 2, 3], () => {
-        count++;
-      });
-      assert.equal(count, 3);
-    });
-  });
-
   describe('#map()', () => {
     const arr = [1, 2, 3];
     const mapped = map(arr, (num) => {
@@ -47,6 +90,13 @@ if (typeof describe === 'function') {
     })
   });
 
+  describe('#reduce()', () => {
+    it('should return array elements added together', () => {
+      const reduced = reduce([1, 2, 3], 0);
+      assert.deepEqual(reduced, 6);
+    });
+  });
+
   describe('#filter()', () => {
     it('should return an array of items that pass the predicate test', () => {
       const filtered = filter([1, 2, 3], (num) => {
@@ -55,49 +105,6 @@ if (typeof describe === 'function') {
       assert.deepEqual(filtered, [2]);
     });
   });
-
-  describe('#some()', () => {
-    let count = 0;
-    const somed = some([1, 2, 3, 4], (num) => {
-      count++;
-      return num % 2 === 0;
-    });
-    it('should return true if at least one item passes the predicate test', () => {
-      assert.equal(somed, true);
-    });
-    it('should stop at the first item that passes the predicate test', () => {
-      assert.equal(count, 2);
-    });
-    it('should return false if no items pass the predicate test', () => {
-      const somed = some([1, 3, 5], (num) => {
-        return num % 2 === 0;
-      });
-      assert.equal(somed, false);
-    });
-  });
-
-  describe('#every()', () => {
-    it('should return true if at all passes the predicate test', () => {
-      const everied = every([2, 4, 6], (num) => {
-        return num % 2 === 0;
-      });
-      assert.equal(everied, true);
-    });
-    let count = 0;
-    const everied = every([2, 3, 4, 5], (num) => {
-      count++;
-      return num % 2 === 0;
-    });
-    it('should return false if any item fails the predicate test', () => {
-      assert.equal(everied, false);
-    });
-    it('should stop at the first item that fails the predicate test', () => {
-      assert.equal(count, 2);
-    });
-  });
-
 } else {
-
   console.log('Only run the tests on this one!')
-
 }
