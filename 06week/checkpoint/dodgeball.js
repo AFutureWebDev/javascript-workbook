@@ -1,5 +1,5 @@
 'use strict;'
-// const assert = require('assert');
+
 // const readline = require('readline');
 // const rl = readline.createInterface({
 //   input: process.stdin,
@@ -82,33 +82,49 @@ class Team {
   }
 }
 
-const signUpList = (element) => {
-// your code here
-}
-
 const bluePlayer = (id) => {
   console.log('blue button was clicked');
-  const findBluePlayer = newPlayer.find(p => {
-    return p.id = id;
+  let newBlueTeam = new Team('NB', 'Unicorn', 'Blue');
+  console.log(newBlueTeam);
+  const findBluePlayer = listOfPlayers.find(p => {
+    return p.id =id;
   })
-  const bluePlayerIndex = newPlayer.indexOf(findBluePlayer);
-  let newBluePlayer = new Team (findBluePlayer.name, findBluePlayer.mascot, findBluePlayer.color);
-  blueTeam.push(newBluePlayer);
-  newPlayer.splice(bluePlayerIndex);
-
+  blueTeam.push(findBluePlayer);
+  console.log("This" + findBluePlayer);
+  const bluePlayerIndex = listOfPlayers.indexOf(findBluePlayer);
+  arrOfPeople.splice(bluePlayerIndex, 1);
+  
   // Creating DOM elements and functionality for blue team
   const bluePlayerLi = document.createElement("li");
   const bluePlayersUl = document.getElementById("blue");
 
   bluePlayersUl.appendChild(bluePlayerLi);
-  bluePlayerLi.appendChild(document.createTextNode(newBluePlayer.name));
-  console.log(newBluePlayer);
+  bluePlayerLi.appendChild(document.createTextNode(findBluePlayer.name));
+  console.log(findBluePlayer);
 }
 
 const redPlayer = (id) => {
   console.log('red button was clicked');
+  let newRedTeam = new Team('Canyon', 'Cougar', 'Red');
+  console.log(newRedTeam);
+  const findRedPlayer = listOfPlayers.find(p => {
+    return p.id =id;
+  })
+  redTeam.push(findRedPlayer);
+  console.log("This is RED" + findRedPlayer);
+  const redPlayerIndex = listOfPlayers.indexOf(findRedPlayer);
+  arrOfPeople.splice(redPlayerIndex, 1);
+
+  // Creating DOM elements and functionality for red team
+  const redPlayerLi = document.createElement("li");
+  const redPlayerUl = document.getElementById("red");
+
+  redPlayerUl.appendChild(redPlayerLi);
+  redPlayerLi.appendChild(document.createTextNode(findRedPlayer.name));
+  console.log(findRedPlayer);
 }
 
+// MAKE PLAYER FUNCTION:
 const makePlayer = (id) => {
   const findPlayer = arrOfPeople.find(p => {
     return p.id = id;
@@ -124,12 +140,18 @@ const makePlayer = (id) => {
   const playersUl = document.getElementById("players");
   blueButton.innerHTML = "Blue Team";
   blueButton.addEventListener('click', function(){
+    blueTeam.push(newPlayer);
+    console.log(blueTeam);
     bluePlayer(id);
+    playersUl.removeChild(playerLi);
   })
   const redButton = document.createElement("button");
   redButton.innerHTML = "Red Team";
   redButton.addEventListener('click', function(){
+    redTeam.push(newPlayer);
+    console.log(redTeam);
     redPlayer(id);
+    playersUl.removeChild(playerLi);
   })
   playersUl.appendChild(playerLi);
   playerLi.appendChild(document.createTextNode(newPlayer.name));
@@ -138,7 +160,7 @@ const makePlayer = (id) => {
   playerLi.append(redButton);
 }
 
-
+// LIST OF PEOPLE FUNCTION:
 function listPeopleChoices() {
   console.log(arrOfPeople);
   const listElement = document.getElementById('people')
@@ -148,6 +170,7 @@ function listPeopleChoices() {
     const button = document.createElement("button");
     button.innerHTML = "Make Player";
     button.addEventListener('click', function() {
+      listElement.removeChild(li);
       console.log('button working');
       makePlayer(person.id)});
 
@@ -157,6 +180,32 @@ function listPeopleChoices() {
   })
 }
 
-// function sayHello() {
-//   console.log("Hello");
-// }
+// TESTS:
+
+// TESTS:(minimum of three)
+// 1. Check to see if a person has become a player
+// 2. Check to see if a player has joined the blue team
+// 3. Check to see if a player has joined the red team
+
+// Does the player have all the necessary parameters
+const assert = require('assert');
+if (typeof describe === 'function') {
+      describe('Player', function(){
+      it('should have an id, a name, an age, a skillSet, and a placeBorn', function(){
+        let player1 = new Player('1', 'Rick Martinez', '20', 'juggler', 'Dallas');
+        assert.equal(player1.id, '1');
+        assert.equal(player1.name, 'Rick Martinez');
+        assert.equal(player1.age, '20');
+        assert.equal(player1.skillSet, 'juggler');
+        assert.equal(player1.placeBorn, 'Dallas');
+      });
+  });
+}
+    describe('Player', function(){
+    it('can join blue team', function(){
+      let player2 = new Player(2, 'Jane Doe', 22, 'snorkeler', 'Houston');
+      bluePlayer(player2.id);
+      assert.equal(blueTeam.length, 1);
+      assert.equal(blueTeam[0], player2.id);
+    });
+});

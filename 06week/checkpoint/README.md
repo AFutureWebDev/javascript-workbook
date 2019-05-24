@@ -12,6 +12,6 @@ Can add Players to different Teams - When we click on the blue button they Playe
         - this idividual is now extended the keys color and mascot value for the red team
 
 TESTS:(minimum of three)
-1. Check to see if a person has become a player
-2. Check to see if a player has joined a team
-3. 
+1. Does the player have all of the necessary parameters
+2. Check to see if a player has joined the blue team
+3. Check to see if a player has joined the red team
