@@ -82,6 +82,7 @@ class Team {
   }
 }
 
+// Function that assigns a player the blue team
 const bluePlayer = (id) => {
   console.log('blue button was clicked');
   let newBlueTeam = new Team('NB', 'Unicorn', 'Blue');
@@ -103,6 +104,7 @@ const bluePlayer = (id) => {
   console.log(findBluePlayer);
 }
 
+// Function that assigns a player the red team
 const redPlayer = (id) => {
   console.log('red button was clicked');
   let newRedTeam = new Team('Canyon', 'Cougar', 'Red');
@@ -124,7 +126,7 @@ const redPlayer = (id) => {
   console.log(findRedPlayer);
 }
 
-// MAKE PLAYER FUNCTION:
+// MAKE PLAYER FUNCTION: turns a person into a dodgeball player
 const makePlayer = (id) => {
   const findPlayer = arrOfPeople.find(p => {
     return p.id = id;
@@ -183,7 +185,7 @@ function listPeopleChoices() {
 // TESTS:
 
 // TESTS:(minimum of three)
-// 1. Check to see if a person has become a player
+// 1. Does the player have all of the necessary parameters
 // 2. Check to see if a player has joined the blue team
 // 3. Check to see if a player has joined the red team
 
@@ -201,11 +203,30 @@ if (typeof describe === 'function') {
       });
   });
 }
-    describe('Player', function(){
-    it('can join blue team', function(){
-      let player2 = new Player(2, 'Jane Doe', 22, 'snorkeler', 'Houston');
-      bluePlayer(player2.id);
-      assert.equal(blueTeam.length, 1);
-      assert.equal(blueTeam[0], player2.id);
-    });
-});
+// check to see if a player has joined the blue team
+      describe("Player", function() {
+        it("can join blue team", function() {
+          let player2 = new Player(2, "Jane Doe", 22, "snorkeler", "Houston");
+          player2 = new Team("NB", "Unicorn", "Blue");
+          assert.equal(player2.name, "NB");
+          assert.equal(player2.mascot, "Unicorn");
+          assert.equal(player2.color, "Blue");
+          assert(!(player2 instanceof Player));
+          assert(player2 instanceof Team);
+        });
+      });
+// check to see if a player has joined the red team
+      describe("Player", function() {
+        it("can join red team", function() {
+          let player3 = new Player(4, "John Doe", 25, "scientist", "San Antonio");
+          player3 = new Team("Canyon", "Cougar", "Red");
+          assert.equal(player3.name, "Canyon");
+          assert.equal(player3.mascot, "Cougar");
+          assert.equal(player3.color, "Red");
+          assert(!(player3 instanceof Player));
+          assert(player3 instanceof Team);
+        });
+      });
+
+
+
