@@ -88,11 +88,12 @@ describe ('allUsers', () => {
     it ('out of range', () => {
       const testFetch = url => {
         assert (
-          url === 'https://randomuser.me/api/?results=10'
+
+          url === 'https://randomuser.me/api/?results=100'
         )
         return new Promise(function(){})
       }
-      allUsers(testFetch, )
+      allUsers(testFetch, 100)
     })
   })
 
@@ -107,5 +108,4 @@ describe ('allUsers', () => {
       allUsers(testFetch, 10, '14569')
     })
   })
-
 
